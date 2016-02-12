@@ -70,12 +70,40 @@ var DinnerModel = function() {
 	//Adds the passed dish to the menu. If the dish of that type already exists on the menu
 	//it is removed from the menu and the new one added.
 	this.addDishToMenu = function(id) {
-		//TODO Lab 2 
+		var dishType;
+		for (i = 0; i < dishes.length; i++) {
+			if(dishes[i].id === id){
+				dishType= dishes[i].type;
+			}
+		}
+		if(dishType === 'starter'){
+			dishStarterId = id;
+		}
+		else if(dishType === 'main dish'){
+			dishMainId = id;
+		}
+		els(dishType === 'dessert'){
+			dishDessertId = id;
+		}
 	}
 
 	//Removes dish from menu
 	this.removeDishFromMenu = function(id) {
-		//TODO Lab 2
+		var dishType;
+		for (i = 0; i < dishes.length; i++) {
+			if(dishes[i].id === id){
+				dishType= dishes[i].type;
+			}
+		}
+		if(dishType === 'starter'){
+			dishStarterId = 0;
+		}
+		else if(dishType === 'main dish'){
+			dishMainId = 0;
+		}
+		els(dishType === 'dessert'){
+			dishDessertId = 0;
+		}
 	}
 
 	//function that returns all dishes of specific type (i.e. "starter", "main dish" or "dessert")
