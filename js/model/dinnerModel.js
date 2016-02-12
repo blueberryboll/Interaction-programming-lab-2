@@ -3,30 +3,57 @@ var DinnerModel = function() {
  
 	//TODO Lab 2 implement the data structure that will hold number of guest
 	// and selected dinner options for dinner menu
+	
+	var numberOfGuests;
+	
+	var dishStarterId;
+	var dishMainId;
+	var dishDessertId;
 
 
 	this.setNumberOfGuests = function(num) {
-		//TODO Lab 2
+		numberOfGuests = num;
 	}
 
 	// should return 
 	this.getNumberOfGuests = function() {
-		//TODO Lab 2
+		return numberOfGuests;
 	}
 
 	//Returns the dish that is on the menu for selected type 
 	this.getSelectedDish = function(type) {
-		//TODO Lab 2
+		for (i = 0; i < dishes.length; i++) {
+			if(dishes[i].type === type && (dishes[i].id === dishStarterId || dishes[i].id === dishMainId || dishes[i].id === dishDessertId)){
+				return dishes[i];
+			}
+		}
 	}
 
 	//Returns all the dishes on the menu.
 	this.getFullMenu = function() {
-		//TODO Lab 2
+		var menuDishes[];
+		if(dishStarterId !== 0) {
+			menuDishes[0] = this.getSelectedDish('starter');
+		}
+		if(dishMainId !== 0) {
+			menuDishes[1] = this.getSelectedDish('main dish');
+		}
+		if(dishDessertId !== 0) {
+			menuDishes[2] = this.getSelectedDish('dessert');
+		}
+		return menuDishes;
 	}
 
 	//Returns all ingredients for all the dishes on the menu.
 	this.getAllIngredients = function() {
-		//TODO Lab 2
+		var fullMenu = this.getFullMenu();
+		var allIngredients[];
+		for (i = 0; i < fullMenu.length; i++) {
+			for (j = 0; j < fullMenu[i].ingredients.length; j++) {
+				allIngredients.push(fullMenu[i].ingredients[j]);
+			}
+		}
+		return allIngredients;
 	}
 
 	//Returns the total price of the menu (all the ingredients multiplied by number of guests).
