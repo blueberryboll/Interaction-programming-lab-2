@@ -13,10 +13,10 @@ a:hover {
 .btn-default,
 .btn-default:hover,
 .btn-default:focus {
-  color: #333;
+  color: #000;
   text-shadow: none; /* Prevent inheritence from `body` */
-  background-color: #fff;
-  border: 1px solid #fff;
+  background-color: #F6B26B;
+  border: 1px solid #000;
 }
 
 
@@ -24,10 +24,13 @@ a:hover {
  * Base structure
  */
 
+html{
+    background-image: url("images/feeding2x.jpg");
+}
 html,
 body {
-  height: 100%;
   background-color: #333;
+  height: 100%;
 }
 body {
   color: #fff;
@@ -46,11 +49,12 @@ body {
 }
 .site-wrapper-inner {
   display: table-cell;
-  vertical-align: top;
+  vertical-align: middle;
 }
 .cover-container {
   margin-right: auto;
   margin-left: auto;
+  width: 100%;
 }
 
 /* Padding for spacing */
@@ -62,9 +66,18 @@ body {
 /*
  * Header
  */
+/* Pull out the header and footer */
+
+.masthead {
+	position: fixed;
+	top: 0;
+	width: 100%;
+}
+  
 .masthead-brand {
-  margin-top: 10px;
-  margin-bottom: 10px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	float: left;
 }
 
 .masthead-nav > li {
@@ -95,13 +108,8 @@ body {
   border-bottom-color: #fff;
 }
 
-@media (min-width: 768px) {
-  .masthead-brand {
-    float: left;
-  }
-  .masthead-nav {
-    float: right;
-  }
+.masthead-nav {
+	float: right;
 }
 
 
@@ -123,41 +131,9 @@ body {
  */
 
 .mastfoot {
-  color: #999; /* IE8 proofing */
-  color: rgba(255,255,255,.5);
-}
-
-
-/*
- * Affix and center
- */
-
-@media (min-width: 768px) {
-  /* Pull out the header and footer */
-  .masthead {
-    position: fixed;
-    top: 0;
-  }
-  .mastfoot {
-    position: fixed;
-    bottom: 0;
-  }
-  /* Start the vertical centering */
-  .site-wrapper-inner {
-    vertical-align: middle;
-  }
-  /* Handle the widths */
-  .masthead,
-  .mastfoot,
-  .cover-container {
-    width: 100%; /* Must be percentage or pixels for horizontal alignment */
-  }
-}
-
-@media (min-width: 992px) {
-  .masthead,
-  .mastfoot,
-  .cover-container {
-    width: 700px;
-  }
+	color: #999; /* IE8 proofing */
+	color: rgba(255,255,255,.5);
+	position: fixed;
+	bottom: 0;
+	width: 100%;
 }
