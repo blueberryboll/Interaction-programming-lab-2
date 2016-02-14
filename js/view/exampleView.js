@@ -1,13 +1,14 @@
-//ExampleView Object constructor
-var ExampleView = function (container) {
+//Site Wrapper Object constructor
+var exampleView = function (container, model) {
+
+	alert("exampleView !");
 	
 	// Get all the relevant elements of the view (ones that show data
   	// and/or ones that responed to interaction)
-	this.numberOfGuests = container.find("#numberOfGuests");
-	this.plusButton = container.find("#plusGuest");
-	this.minusButton = container.find("#minusGuest");
 	
-	this.numberOfGuests.html("Hello World");
+	this.new_dinner_btn = container.find("#new-dinner-btn");
+	this.new_dinner_btn.html("Hello World");
+	this.new_dinner_btn.hide();
 	
 }
  
