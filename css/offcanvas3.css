@@ -123,8 +123,8 @@ hr {
 }
 #img1{
     color: #000;
-  text-align: center;
-  text-shadow: 0 1px 3px rgba(0,0,0,.5);
+    text-align: left;
+    text-shadow: 0 1px 3px rgba(0,0,0,.5);
     background: #fff url(http://fabresoft.com/soundinnoise/meatballs.jpg);
     background-size: 100%;
     background-repeat: no-repeat;
@@ -140,11 +140,27 @@ hr {
   text-align: center;
 
 }
+#cl1{
+    float:left;
+    width:100px;
+    display: none;
+}
+
+#cl2{
+    float:right;
+    width:100px;
+    background-color: rgba(255, 229, 153, 1);
+}
 
 .view2{
   float:left;
+  height:100%;
   width: 200px;
   padding: 20px;
+}
+.ingredientList{
+  background-color: rgba(238, 238, 238, 1);
+  padding:20px;
 }
 /*
  * Off Canvas
