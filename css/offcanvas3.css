@@ -1,0 +1,192 @@
+/*
+ * Style tweaks
+ * --------------------------------------------------
+ */
+html,
+body {
+  overflow-x: hidden; /* Prevent scroll on narrow devices */
+}
+body {
+}
+footer {
+  padding: 30px 0;
+}
+.masthead {
+  width: 100%;
+  height: 100px;
+  padding: 30px;
+  margin-bottom: 10px;
+  background-color: rgba(238, 238, 238, 1);
+}
+  
+.masthead-brand {
+  margin-top: auto;
+  margin-bottom: auto;
+  float: left;
+
+}
+#view-header {
+  border: 2px;
+  border-color: #000;
+  
+}
+
+.masthead-text {
+  margin-top: 16px;
+  margin-bottom: auto;
+  vertical-align: middle;
+  margin-left: 20px;
+  float: left;
+  font-size: 16px;
+  font-style: italic;
+}
+
+.masthead-nav > li {
+  display: inline-block;
+}
+.masthead-nav > li + li {
+  margin-left: 20px;
+}
+.masthead-nav > li > a {
+  padding-right: 0;
+  padding-left: 0;
+  font-size: 16px;
+  font-weight: bold;
+  color: #000; /* IE8 proofing */
+  color: rgba(255,255,255,.75);
+  border-bottom: 2px solid transparent;
+}
+.masthead-nav > li > a:hover,
+.masthead-nav > li > a:focus {
+  background-color: transparent;
+  border-bottom-color: #a9a9a9;
+  border-bottom-color: rgba(255,255,255,.25);
+}
+.masthead-nav > .active > a,
+.masthead-nav > .active > a:hover,
+.masthead-nav > .active > a:focus {
+  color: #000;
+  border-bottom-color: #000;
+}
+
+.masthead-nav {
+  float: right;
+}
+
+#search{
+  width: 30%;
+  height: 10%;
+  float: left;
+}
+#dropdownmenu{
+  width: 30%;
+  height: 10%;
+  float: right;
+}
+.dropdown{
+  float: left;
+
+}
+#people{
+  margin-top: 5px;
+  margin-right: 10px;
+  height:20px;
+  line-height: 20px;
+  vertical-align: center;
+  float: left;
+}
+
+#container{
+
+}
+
+.dishName{
+  background-color: rgba(238, 238, 238, 1);
+  padding: 5px;
+}
+#panel-select{
+  background-color: rgba(255, 229, 153, 1);
+
+}
+#dish{
+  float:left;
+}
+#cost{
+  text-align:right;
+  
+}
+hr {
+  border-color: #000;
+}
+#totalPrice{
+  text-align: right;
+}
+#img1{
+    color: #000;
+  text-align: center;
+  text-shadow: 0 1px 3px rgba(0,0,0,.5);
+    background: #fff url(http://fabresoft.com/soundinnoise/meatballs.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 260px;
+    height: 200px;
+}
+
+.recipeTitle{
+
+}
+.panel{
+  background-color: rgba(238, 238, 238, 1);
+  text-align: center;
+
+}
+
+.view2{
+  float:left;
+  width: 200px;
+  padding: 20px;
+}
+/*
+ * Off Canvas
+ * --------------------------------------------------
+ */
+@media screen and (max-width: 767px) {
+  .row-offcanvas {
+    position: relative;
+    -webkit-transition: all .25s ease-out;
+         -o-transition: all .25s ease-out;
+            transition: all .25s ease-out;
+  }
+
+  .row-offcanvas-right {
+    right: 0;
+  }
+
+  .row-offcanvas-left {
+    left: 0;
+  }
+
+  .row-offcanvas-right
+  .sidebar-offcanvas {
+    right: -50%; /* 6 columns */
+  }
+
+  .row-offcanvas-left
+  .sidebar-offcanvas {
+    left: -50%; /* 6 columns */
+  }
+
+  .row-offcanvas-right.active {
+    right: 50%; /* 6 columns */
+  }
+
+  .row-offcanvas-left.active {
+    left: 50%; /* 6 columns */
+  }
+
+  .sidebar-offcanvas {
+    position: absolute;
+    top: 0;
+    width: 50%; /* 6 columns */
+  }
+}
