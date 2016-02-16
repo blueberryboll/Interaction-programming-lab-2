@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
 
   <!-- Custom styles for this template -->
-    <link href="css/offcanvas.css" rel="stylesheet">
+    <link href="css/offcanvas3.css" rel="stylesheet">
   </head>
 
   <body>
@@ -44,15 +44,18 @@
       <p id="dish">Pending</p> <p id="cost">0.00</p>
       <hr />
       <p id="totalPrice"> SEK 0.00 </p>
-      <a href="index3.html" class="btn btn-lg btn-default" id="new-dinner-btn" onclick="$('#view-header').toggle();">Confirm Dinner </a>
+      <a href="index4.html" class="btn btn-lg btn-default" id="confirmDinner" onclick="$('#view-header').toggle();">Confirm Dinner </a>
     </div>
 
     <div class="container" id="container"> 
         <div class="row">
-        <div class="col-sm-4">
+        <div class="col-sm-5">
           
             <h2> Lasagna </h2> 
             <img src="images/meatballs.jpg">
+            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+            <a href="index3.html" class="btn btn-lg btn-default" id="backtoSelectDish" onclick="$('#view-header').toggle();">Back to select dish </a> 
+            <h2>Preperation</h2>
             <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
           
         </div>
@@ -60,11 +63,24 @@
         <div class="col-sm-4">
           <div class="ingredientList">
             <h4> Ingredients for 4 people </h4>
+            <hr />
+            <div class="ingredient"> 2tbsp olive oil </div> <div class="inCost"> SEK 0.20</div>
+            <div class="ingredient"> 2tbsp olive oil </div> <div class="inCost"> SEK 0.20</div>
+            <div class="ingredient"> 2tbsp olive oil </div> <div class="inCost"> SEK 0.20</div>
+            <div class="ingredient"> 2tbsp olive oil </div> <div class="inCost"> SEK 0.20</div>
+            <hr />
+            <a href="index4.html" class="btn btn-lg btn-default" id="confirmDish" onclick="$('#view-header').toggle();">Confirm Dish </a> 
+
+            <div id="recipeCost"> SEK 100</div>
+            <br>
+            <br>
+
           </div>
 
+
         </div> 
-      </div>
-      
+    
+    </div>  
 
     </div><!--/.container-->
 

@@ -99,6 +99,10 @@ footer {
 #container{
 
 }
+.imgThumb{
+  width: 100%;
+  height: auto;
+}
 
 .dishName{
   background-color: rgba(238, 238, 238, 1);

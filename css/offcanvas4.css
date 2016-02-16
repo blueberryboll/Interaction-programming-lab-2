@@ -123,54 +123,45 @@ hr {
 }
 #img1{
     color: #000;
-    text-align: left;
-    text-shadow: 0 1px 3px rgba(0,0,0,.5);
+  text-align: center;
+  text-shadow: 0 1px 3px rgba(0,0,0,.5);
     background: #fff url(http://fabresoft.com/soundinnoise/meatballs.jpg);
     background-size: 100%;
     background-repeat: no-repeat;
     width: 260px;
     height: 200px;
 }
+.priceAlign{
+  float: right;
+}
+.imgThumb{
+  width: 100%;
+  height: auto;
+}
 
 .recipeTitle{
 
+}
+#backtoEditDinner{
+  float:right;
 }
 .panel{
   background-color: rgba(238, 238, 238, 1);
   text-align: center;
 
 }
-.cl1{
-    float:left;
+#panel-title{
+  float: left;
 }
-
-.cl2{
-    float:right;
-    width:300px;
-    background-color: rgba(255, 229, 153, 1);
+#vline{
+  padding-bottom: 200px;
+  border-left: thick solid #000000;
 }
 
 .view2{
   float:left;
-  height:100%;
   width: 200px;
   padding: 20px;
-}
-.ingredientList{
-  background-color: rgba(255, 229, 153, 1);
-  padding:20px;
-}
-.ingredient{
-  float:left;
-}
-.inCost{
-  text-align: right;
-}
-#recipeCost{
-  float: right;
-}
-#confirmDish{
-  float: left;
 }
 /*
  * Off Canvas
