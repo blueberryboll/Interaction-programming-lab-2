@@ -31,12 +31,7 @@ body {
 
 }
 body {
-	color: #000;
-	text-align: center;
-	text-shadow: 0 1px 3px rgba(0,0,0,.5);
-    background: #fff url(http://fabresoft.com/soundinnoise/feeding2x.jpg);
-    background-size: 100%;
-    background-repeat: no-repeat;
+
 }
 
 /* Extra markup and styles for table-esque vertical and horizontal centering */
@@ -131,7 +126,9 @@ body {
  */
 
 .cover {
-  padding: 0 20px;
+	padding: 0 20px;
+  
+
 }
 .cover .btn-lg {
   padding: 10px 20px;
@@ -150,4 +147,16 @@ body {
 }
 hr {
 	border-color: #000;
+}
+
+/* Hiding */
+#view-welcome {
+	display: none;
+	
+	color: #000;
+	text-align: center;
+	text-shadow: 0 1px 3px rgba(0,0,0,.5);
+    background: #fff url(http://fabresoft.com/soundinnoise/feeding2x.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
 }
