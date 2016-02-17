@@ -4,11 +4,11 @@ var DinnerModel = function() {
 	//TODO Lab 2 implement the data structure that will hold number of guest
 	// and selected dinner options for dinner menu
 	
-	var numberOfGuests;
+	var numberOfGuests = 0;
 	
-	var dishStarterId;
-	var dishMainId;
-	var dishDessertId;
+	var dishStarterId = 0;
+	var dishMainId = 0;
+	var dishDessertId = 0;
 
 
 	this.setNumberOfGuests = function(num) {
@@ -31,7 +31,7 @@ var DinnerModel = function() {
 
 	//Returns all the dishes on the menu.
 	this.getFullMenu = function() {
-		var menuDishes[];
+		var menuDishes = [];
 		if(dishStarterId !== 0) {
 			menuDishes[0] = this.getSelectedDish('starter');
 		}
@@ -47,7 +47,7 @@ var DinnerModel = function() {
 	//Returns all ingredients for all the dishes on the menu.
 	this.getAllIngredients = function() {
 		var fullMenu = this.getFullMenu();
-		var allIngredients[];
+		var allIngredients = [];
 		for (i = 0; i < fullMenu.length; i++) {
 			for (j = 0; j < fullMenu[i].ingredients.length; j++) {
 				allIngredients.push(fullMenu[i].ingredients[j]);
@@ -58,13 +58,12 @@ var DinnerModel = function() {
 
 	//Returns the total price of the menu (all the ingredients multiplied by number of guests).
 	this.getTotalMenuPrice = function() {
-		var allIngredients[] = this.getAllIngredients();
-		var totalCost;
+		var allIngredients = this.getAllIngredients();
+		var totalCost=0;
 		for (i = 0; i < allIngredients.length; i++) {
 			totalCost += allIngredients[i].price;
 		}
-
-		return totalCost*this.getNumberOfGuests;
+		return totalCost*this.getNumberOfGuests();
 	}
 
 	//Adds the passed dish to the menu. If the dish of that type already exists on the menu
@@ -82,7 +81,7 @@ var DinnerModel = function() {
 		else if(dishType === 'main dish'){
 			dishMainId = id;
 		}
-		els(dishType === 'dessert'){
+		else if(dishType === 'dessert'){
 			dishDessertId = id;
 		}
 	}
@@ -101,7 +100,7 @@ var DinnerModel = function() {
 		else if(dishType === 'main dish'){
 			dishMainId = 0;
 		}
-		els(dishType === 'dessert'){
+		else if(dishType === 'dessert'){
 			dishDessertId = 0;
 		}
 	}

@@ -14,75 +14,75 @@
     <link href="css/offcanvas3.css" rel="stylesheet">
   </head>
 
-  <body>
-    <div class="masthead clearfix" id="view-header">
-            <div class="inner">
-              <h1 class="masthead-brand">HOMELETTE</h1><span class="masthead-text">From the best chefs in the world directly into your kitchen</span>
-            </div>
-      </div>
-
-    <div class="view2">
-      <h4> My Dinner </h4>
-      <p id="people"> People </p>
-      <div class="dropdown">
-          <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-            3
-          <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-          </ul>
-      </div>
-      <br>
-      <br>
-      <div class="dishName">
-      <p id="dish">Dish Name</p> <p id="cost">Cost</p></div>
-      <p id="dish">Pending</p> <p id="cost">0.00</p>
-      <hr />
-      <p id="totalPrice"> SEK 0.00 </p>
-      <a href="index4.html" class="btn btn-lg btn-default" id="confirmDinner" onclick="$('#view-header').toggle();">Confirm Dinner </a>
-    </div>
-
-    <div class="container" id="container"> 
-        <div class="row">
-        <div class="col-sm-5">
-          
-            <h2> Lasagna </h2> 
-            <img src="images/meatballs.jpg">
-            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-            <a href="index3.html" class="btn btn-lg btn-default" id="backtoSelectDish" onclick="$('#view-header').toggle();">Back to select dish </a> 
-            <h2>Preperation</h2>
-            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          
+  <body id="bodyContainer">
+    
+      <div class="masthead clearfix" id="view-header">
+              <div class="inner">
+                <h1 class="masthead-brand">HOMELETTE</h1><span class="masthead-text">From the best chefs in the world directly into your kitchen</span>
+              </div>
         </div>
 
-        <div class="col-sm-4">
-          <div class="ingredientList">
-            <h4> Ingredients for 4 people </h4>
-            <hr />
-            <div class="ingredient"> 2tbsp olive oil </div> <div class="inCost"> SEK 0.20</div>
-            <div class="ingredient"> 2tbsp olive oil </div> <div class="inCost"> SEK 0.20</div>
-            <div class="ingredient"> 2tbsp olive oil </div> <div class="inCost"> SEK 0.20</div>
-            <div class="ingredient"> 2tbsp olive oil </div> <div class="inCost"> SEK 0.20</div>
-            <hr />
-            <a href="index4.html" class="btn btn-lg btn-default" id="confirmDish" onclick="$('#view-header').toggle();">Confirm Dish </a> 
+      <div class="view2">
+        <h4> My Dinner </h4>
+        <p id="people"> People </p>
+        <div class="dropdown">
+            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+              3
+            <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+              <li><a href="#">2</a></li>
+              <li><a href="#">3</a></li>
+              <li><a href="#">4</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="#">Separated link</a></li>
+            </ul>
+        </div>
+        <br>
+        <br>
+        <div class="dishName">
+        <p id="dish">Dish Name</p> <p id="cost">Cost</p></div>
+        <p id="dish">Pending</p> <p id="cost">0.00</p>
+        <hr />
+        <p id="totalPrice"> SEK 0.00 </p>
+        <a href="index4.html" class="btn btn-lg btn-default" id="confirmDinner" onclick="$('#view-header').toggle();">Confirm Dinner </a>
+      </div>
 
-            <div id="recipeCost"> SEK 100</div>
-            <br>
-            <br>
-
+      <div class="container" id="container"> 
+          <div class="row">
+          <div class="col-sm-5">
+            
+              <h2 id="individualRecipeTitle"> Title </h2> 
+              <img src="images/feeding2x.jpg" id="titleImg">
+              <p id="individualRecipeDescription">Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+              <a href="index3.html" class="btn btn-lg btn-default" id="backtoSelectDish" onclick="$('#view-header').toggle();">Back to select dish </a> 
+              <h2>Preperation</h2>
+              <p id="individualRecipePreparation">Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+            
           </div>
 
+          <div class="col-sm-4">
+            <div id="ingredientList">
+              <h4> Ingredients for 4 people </h4>
+              <hr />
+              <div id="recipeIngredientList">
+              </div> 
+              <hr />
+              <a href="index4.html" class="btn btn-lg btn-default" id="confirmDish" onclick="$('#view-header').toggle();">Confirm Dish </a> 
 
-        </div> 
-    
-    </div>  
+              <div id="recipeCost"> SEK 100</div>
+              <br>
+              <br>
 
-    </div><!--/.container-->
+            </div>
+
+
+          </div> 
+      
+      </div>  
+
+      </div><!--/.container-->
+  
 
 <!-- jQuery -->
     <script src="https://code.jquery.com/jquery.js"></script>

@@ -12,58 +12,61 @@
 	<!-- Custom styles for this template -->
     <link href="css/template.css" rel="stylesheet">
   </head>
-  <body>
-    <div class="site-wrapper" id="view-welcome">
+  <body id="bodyContainer">
+    
+        <div class="site-wrapper" id="view-welcome">
 
-      <div class="site-wrapper-inner">
+          <div class="site-wrapper-inner">
 
-        <div class="cover-container">
+            <div class="cover-container">
 
-          <div class="masthead clearfix" id="view-header">
-            <div class="inner">
-              <h1 class="masthead-brand">HOMELETTE</h1><span class="masthead-text">From the best chefs in the world directly into your kitchen</span>
+              <div class="masthead clearfix" id="view-header">
+                <div class="inner">
+                  <h1 class="masthead-brand">HOMELETTE</h1><span class="masthead-text">From the best chefs in the world directly into your kitchen</span>
+                </div>
+              </div>
+
+              <div class="inner cover" id="view-cover">
+    		
+          			<div class="panel" id="panel-welcome">
+          			  <div class="panel-body">
+          				<h3 id="panel-title">A Home Dinner Service</h3>
+          				<hr id="line-separator" />
+          				<p class="lead">Lorem ipsum dolor sit amet, pro et quaeque tacimates reprimique. Ad has salutatus omittantur. Cu mel sanctus convenire, vim ea fugit oratio. Lobortis voluptaria quaerendum ius id, meis interesset vim ut. Et qui latine accommodare intellegebat. Vim at nonumy eleifend, mea ea partem persius. Nonumy verear prompta cu eum.</p>
+          				<p class="lead">start quickly</p>
+          				<p class="lead">
+          					<a href="index2.html" class="btn btn-lg btn-default" id="new-dinner-btn" onclick="$('#view-header').toggle();">Create new dinner</a>
+          				</p>
+          			  </div>
+          			</div>
+              </div>
+
             </div>
-          </div>
 
-          <div class="inner cover" id="view-cover">
-		
-			<div class="panel" id="panel-welcome">
-			  <div class="panel-body">
-				<h3 id="panel-title">A Home Dinner Service</h3>
-				<hr id="line-separator" />
-				<p class="lead">Lorem ipsum dolor sit amet, pro et quaeque tacimates reprimique. Ad has salutatus omittantur. Cu mel sanctus convenire, vim ea fugit oratio. Lobortis voluptaria quaerendum ius id, meis interesset vim ut. Et qui latine accommodare intellegebat. Vim at nonumy eleifend, mea ea partem persius. Nonumy verear prompta cu eum.</p>
-				<p class="lead">start quickly</p>
-				<p class="lead">
-					<a href="index2.html" class="btn btn-lg btn-default" id="new-dinner-btn" onclick="$('#view-header').toggle();">Create new dinner</a>
-				</p>
-			  </div>
-			</div>
           </div>
 
         </div>
+    	
+        
 
-      </div>
-
-    </div>
-	
-    
-
-    
-
+          
+  
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery.js"></script>
     <!-- Bootstrap JavaScript, needed if you want for instance tabs, models, popovers etc. -->
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
 
 	<!-- The application JavaScript code -->
+  <script src="js/model/dinnerModel.js"></script>
+  <script src="js/view/exampleView.js"></script>
 	<script src="js/app.js"></script>
-	<script src="js/model/dinnerModel.js"></script>
-	<script src="js/view/exampleView.js"></script>
-	<script src="js/view/exampleViewController.js"></script>
 	
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<!-- <script src="js/view/exampleViewController.js"></script>-->
+	
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
+
   </body>
 </html>

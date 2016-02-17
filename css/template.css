@@ -148,6 +148,10 @@ body {
 hr {
 	border-color: #000;
 }
+#bodyContainer{
+  margin:0px;
+  padding: 0px;
+}
 
 /* Hiding */
 #view-welcome {

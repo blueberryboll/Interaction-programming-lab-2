@@ -14,7 +14,8 @@
     <link href="css/offcanvas.css" rel="stylesheet">
   </head>
 
-  <body>
+  <body id="bodyContainer">
+
     <div class="masthead clearfix" id="view-header">
             <div class="inner">
               <h1 class="masthead-brand">HOMELETTE</h1><span class="masthead-text">From the best chefs in the world directly into your kitchen</span>
@@ -26,7 +27,7 @@
       <p id="people"> People </p>
       <div class="dropdown">
           <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-            3
+            
           <span class="caret"></span>
           </button>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
@@ -43,7 +44,7 @@
       <p id="dish">Dish Name</p> <p id="cost">Cost</p></div>
       <p id="dish">Pending</p> <p id="cost">0.00</p>
       <hr />
-      <p id="totalPrice"> SEK 0.00 </p>
+      <p id="totalPrice"> 0.00 SEK</p>
       <a href="index3.html" class="btn btn-lg btn-default" id="confirmDinner" onclick="$('#view-header').toggle();">Confirm Dinner </a>
     </div>
 
@@ -66,7 +67,7 @@
             </div>
             
             <div class="dropdown" id="dropdownmenu">
-                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Main
+                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" >Main
                 <span class="caret"></span></button>
                 <ul class="dropdown-menu">
                   <li><a href="#">Entree</a></li>
@@ -77,42 +78,8 @@
             
             </div>
       </div>
-          <div class="row">
-            <div class="col-xs-6 col-lg-4">
-              <img src="images/meatballs.jpg" class="imgThumb">
-              <div class="panel"><h2 class="recipeTitle">Meatballs</h2></div>
+          <div class="row" id="recipeTiles">
 
-              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-              
-            </div><!--/.col-xs-6.col-lg-4-->
-            <div class="col-xs-6 col-lg-4">
-              <img src="images/meatballs.jpg" class="imgThumb">
-              <div class="panel"><h2 class="recipeTitle">Meatballs</h2></div>
-
-              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-              
-            </div><!--/.col-xs-6.col-lg-4-->
-            <div class="col-xs-6 col-lg-4">
-              <img src="images/meatballs.jpg" class="imgThumb">
-              <div class="panel"><h2 class="recipeTitle">Meatballs</h2></div>
-
-              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-              
-            </div><!--/.col-xs-6.col-lg-4-->
-            <div class="col-xs-6 col-lg-4">
-              <img src="images/meatballs.jpg" class="imgThumb">
-              <div class="panel"><h2 class="recipeTitle">Meatballs</h2></div>
-
-              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-              
-            </div><!--/.col-xs-6.col-lg-4-->
-            <div class="col-xs-6 col-lg-4">
-              <img src="images/meatballs.jpg" class="imgThumb">
-              <div class="panel"><h2 class="recipeTitle">Meatballs</h2></div>
-
-              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-              
-            </div><!--/.col-xs-6.col-lg-4-->
           </div><!--/row-->
         </div><!--/.col-xs-12.col-sm-9-->
 
