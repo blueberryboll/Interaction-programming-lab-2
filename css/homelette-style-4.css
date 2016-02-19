@@ -155,7 +155,7 @@ hr {
 }
 #vline{
   padding-bottom: 200px;
-  border-left: thick solid #000000;
+  border-left: 2px solid #000000;
 }
 
 .view2{
