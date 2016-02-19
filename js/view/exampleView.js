@@ -7,9 +7,30 @@ var ExampleView = function (container, model) {
   	// and/or ones that responed to interaction)
 	
 	// Side menu
-	if( $('.view2').length !== 0 ) {
+	if( $('.view-side').length !== 0 ) {
 		this.people = container.find("#dropdownMenu1");
 		this.people.html(model.getNumberOfGuests());
+		
+		model.setSelectedDish(100);
+		
+		// Add selected items
+		this.selectedDishItems = container.find("#selectedDishItems");
+		
+		var selectedDishes = model.getFullMenu();
+		for(var i=0; i<selectedDishes.length; i++) {
+			var menuItemNameP = document.createElement('p');
+			menuItemNameP.setAttribute('class','dish');
+			var menuItemNamePText = document.createTextNode(selectedDishes[i].name);
+			menuItemNameP.appendChild(menuItemNamePText);
+			
+			var menuItemCostP = document.createElement('p');
+			menuItemCostP.setAttribute('class','cost');
+			var menuItemCostPText = document.createTextNode(model.getDishPrice(selectedDishes[i].id));
+			menuItemCostP.appendChild(menuItemCostPText);
+			
+			this.selectedDishItems.append(menuItemNameP);
+			this.selectedDishItems.append(menuItemCostP);
+		}
 
 		this.totalPrice = container.find("#totalPrice");
 		this.totalPrice.html("SEK "+model.getTotalMenuPrice());
@@ -48,8 +69,8 @@ var ExampleView = function (container, model) {
 		}
 	}
 	
+	// Individual recipe
 	if( $('#individualRecipeTitle').length !== 0 ) {
-		// Individual recipe
 		this.individualRecipeTitle = container.find("#individualRecipeTitle");
 		this.individualRecipeTitle.html(model.getDish(100).name);
 
@@ -61,6 +82,9 @@ var ExampleView = function (container, model) {
 
 		this.individualRecipePreparation = container.find("#individualRecipePreparation");
 		this.individualRecipePreparation.html(model.getDish(100).description);
+		
+		this.recipeCost = container.find("#recipeCost");
+		this.recipeCost.html("SEK "+model.getDishPrice(100));
 
 		// Fill in ingredient list
 		this.ingredientList = container.find("#recipeIngredientList");

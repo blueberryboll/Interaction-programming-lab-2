@@ -21,7 +21,7 @@
               </div>
         </div>
 
-      <div class="view2">
+      <div class="view-side">
         <h4> My Dinner </h4>
         <p id="people"> People </p>
         <div class="dropdown">
@@ -40,8 +40,10 @@
         <br>
         <br>
         <div class="dishName">
-        <p id="dish">Dish Name</p> <p id="cost">Cost</p></div>
-        <p id="dish">Pending</p> <p id="cost">0.00</p>
+        <p class="dish">Dish Name</p> <p class="cost">Cost</p></div>
+		<div id="selectedDishItems">
+			<p class="dish">Pending</p> <p class="cost">0.00</p>
+		</div>
         <hr />
         <p id="totalPrice"> SEK 0.00 </p>
         <a href="index4.html" class="btn btn-lg btn-default" id="confirmDinner" onclick="$('#view-header').toggle();">Confirm Dinner </a>
@@ -52,7 +54,7 @@
           <div class="col-sm-5">
             
               <h2 id="individualRecipeTitle"> Title </h2> 
-              <img src="images/feeding2x.jpg" id="titleImg">
+              <img src="images/food.jpg" id="titleImg">
               <p id="individualRecipeDescription">Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
               <a href="index3.html" class="btn btn-lg btn-default" id="backtoSelectDish" onclick="$('#view-header').toggle();">Back to select dish </a> 
               <h2>Preperation</h2>

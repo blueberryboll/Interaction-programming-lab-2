@@ -28,18 +28,31 @@ var DinnerModel = function() {
 			}
 		}
 	}
+	// Set selected dish for menu
+	this.setSelectedDish = function(id) {
+		if(this.getDish(id).type === "starter") {
+			dishStarterId = id;
+		} else if(this.getDish(id).type === "main dish") {
+			dishMainId = id;
+		} else if(this.getDish(id).type === "dessert") {
+			dishDessertId = id;
+		}
+	}
 
 	//Returns all the dishes on the menu.
 	this.getFullMenu = function() {
 		var menuDishes = [];
 		if(dishStarterId !== 0) {
-			menuDishes[0] = this.getSelectedDish('starter');
+			//menuDishes[0] = this.getSelectedDish('starter');
+			menuDishes.push( this.getSelectedDish('starter') );
 		}
 		if(dishMainId !== 0) {
-			menuDishes[1] = this.getSelectedDish('main dish');
+			//menuDishes[1] = this.getSelectedDish('main dish');
+			menuDishes.push( this.getSelectedDish('main dish') );
 		}
 		if(dishDessertId !== 0) {
-			menuDishes[2] = this.getSelectedDish('dessert');
+			//menuDishes[2] = this.getSelectedDish('dessert');
+			menuDishes.push( this.getSelectedDish('dessert') );
 		}
 		return menuDishes;
 	}
@@ -63,7 +76,17 @@ var DinnerModel = function() {
 		for (i = 0; i < allIngredients.length; i++) {
 			totalCost += allIngredients[i].price;
 		}
-		return totalCost*this.getNumberOfGuests();
+		return Math.round( (totalCost/4*this.getNumberOfGuests()) *100)/100;
+	}
+	
+	//Returns the price for one dish (all the ingredients multiplied by number of guests)
+	this.getDishPrice = function(id) {
+		var allIngredients = this.getDish(id).ingredients;
+		var totalCost=0;
+		for (i = 0; i < allIngredients.length; i++) {
+			totalCost += allIngredients[i].price;
+		}
+		return Math.round( (totalCost/4*this.getNumberOfGuests()) *100)/100;
 	}
 
 	//Adds the passed dish to the menu. If the dish of that type already exists on the menu
