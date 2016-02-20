@@ -11,8 +11,6 @@ var ExampleView = function (container, model) {
 		this.people = container.find("#dropdownMenu1");
 		this.people.html(model.getNumberOfGuests());
 		
-		model.setSelectedDish(100);
-		
 		// Add selected items
 		this.selectedDishItems = container.find("#selectedDishItems");
 		
@@ -40,7 +38,7 @@ var ExampleView = function (container, model) {
 	// Recipe tiles
 	this.recipeTiles = container.find("#recipeTiles");
 	if( $('#recipeTiles').length !== 0 ) {
-		allDishes = model.getAllDishes('main dish');
+		var allDishes = model.getAllDishes('main dish'); //TODO type selection
 		for(var i=0; i<allDishes.length; i++) {
 			var recipeDiv = document.createElement('div');
 			recipeDiv.setAttribute('class','col-xs-3');
@@ -89,7 +87,7 @@ var ExampleView = function (container, model) {
 		// Fill in ingredient list
 		this.ingredientList = container.find("#recipeIngredientList");
 
-		recipeIngredients = model.getDish(100).ingredients;
+		var recipeIngredients = model.getDish(100).ingredients;
 		for(var i=0; i<recipeIngredients.length; i++) {
 			var ingredientDiv = document.createElement('div');
 			ingredientDiv.setAttribute('class','ingredient');
@@ -106,5 +104,96 @@ var ExampleView = function (container, model) {
 		}
 
 	}
+	
+	// Info panel
+	if( $('#panel-info').length !== 0 ) {
+		this.panelTitle = container.find("#panel-title");
+		this.panelTitle.html("My Dinner: "+model.getNumberOfGuests()+" people");
+	}
+	
+	// Menu thumbs
+	if( $('#menuThumbs').length !== 0 ) {
+		this.sumCost = container.find("#sumCost");
+		this.sumCost.html("Total Cost: "+model.getTotalMenuPrice()+"SEK");
+		
+		this.menuThumbs = container.find("#menuThumbs");
+		var menuDishes = model.getFullMenu();
+		for(var i=0; i<menuDishes.length; i++) {
+			var recipeDiv = document.createElement('div');
+			recipeDiv.setAttribute('class','col-xs-2');
+
+			var recipeImg = document.createElement('img');
+			recipeImg.setAttribute('class','imgThumb');
+			recipeImg.setAttribute('src','images/'+menuDishes[i].image);
+			recipeDiv.appendChild(recipeImg);
+
+			var recipeTitleDiv = document.createElement('div');
+			recipeTitleDiv.setAttribute('class','panel');
+			var recipeTitleH2 = document.createElement('h2');
+			recipeTitleH2.setAttribute('class','recipeTitle');
+			var recipeTitleH2Text = document.createTextNode(menuDishes[i].name);
+			recipeTitleH2.appendChild(recipeTitleH2Text);
+			recipeTitleDiv.appendChild(recipeTitleH2);
+			recipeDiv.appendChild(recipeTitleDiv);
+			
+			var recipeP = document.createElement('p');
+			recipeP.setAttribute('class','priceAlign');
+			var recipePText = document.createTextNode(model.getDishPrice(menuDishes[i].id)+" SEK");
+			recipeP.appendChild(recipePText);
+			recipeDiv.appendChild(recipeP);
+
+
+			this.menuThumbs.prepend(recipeDiv);
+		}
+	}
+	
+	// Summary container
+	if( $('#summaryContainer').length !== 0 ) {
+		this.summaryContainer = container.find("#summaryContainer");
+		
+		var menuDishes = model.getFullMenu();
+		for(var i=0; i<menuDishes.length; i++) {
+			var recipeSummaryDiv = document.createElement('div');
+			recipeSummaryDiv.setAttribute('class','recipeSummary');
+
+			var recipeImg = document.createElement('img');
+			recipeImg.setAttribute('class','photo');
+			recipeImg.setAttribute('src','images/'+menuDishes[i].image);
+			recipeSummaryDiv.appendChild(recipeImg);
+			
+			var recipeDescriptionDiv = document.createElement('div');
+			recipeDescriptionDiv.setAttribute('class','description');
+			var recipeTitleH2 = document.createElement('h2');
+			var recipeTitleH2Text = document.createTextNode(menuDishes[i].name);
+			recipeTitleH2.appendChild(recipeTitleH2Text);
+			recipeDescriptionDiv.appendChild(recipeTitleH2);
+			var recipeDescriptionP = document.createElement('p');
+			var recipeDescriptionPText = document.createTextNode(menuDishes[i].description);
+			recipeDescriptionP.appendChild(recipeDescriptionPText);
+			recipeDescriptionDiv.appendChild(recipeDescriptionP);
+			recipeSummaryDiv.appendChild(recipeDescriptionDiv);
+			
+			var recipePreparationDiv = document.createElement('div');
+			recipePreparationDiv.setAttribute('class','preparation');
+			var recipeTitleH4 = document.createElement('h4');
+			var recipeTitleH4Text = document.createTextNode('Preparation');
+			recipeTitleH4.appendChild(recipeTitleH4Text);
+			recipePreparationDiv.appendChild(recipeTitleH4);
+			var recipePreparationP = document.createElement('p');
+			var recipePreparationPText = document.createTextNode(menuDishes[i].description);
+			recipePreparationP.appendChild(recipePreparationPText);
+			recipePreparationDiv.appendChild(recipePreparationP);
+			recipeSummaryDiv.appendChild(recipePreparationDiv);
+			
+			this.summaryContainer.append(recipeSummaryDiv);
+			
+			
+			var recipeSummaryDiv = document.createElement('div');
+			recipeSummaryDiv.setAttribute('style','clear:both height:0;');
+			
+			this.summaryContainer.append(recipeSummaryDiv);
+		}
+	}
+	
 }
  
