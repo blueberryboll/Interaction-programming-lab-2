@@ -13,6 +13,7 @@ var DinnerModel = function() {
 
 	this.setNumberOfGuests = function(num) {
 		numberOfGuests = num;
+		notifyObservers();
 	}
 
 	// should return 
@@ -159,6 +160,25 @@ var DinnerModel = function() {
 		}
 	}
 
+	this.addObserver = function(observer){
+		observers.push(observer);
+
+	}
+
+	var notifyObservers = function(){
+		for(var i = 0; i<observers.length; i++){
+			observers[i].update();
+
+		}
+	}
+
+	this.retrieveNewData = function(){
+		notifyObservers();
+
+	}
+
+
+	var observers = [];
 
 	// the dishes variable contains an array of all the 
 	// dishes in the database. each dish has id, name, type,
@@ -168,6 +188,7 @@ var DinnerModel = function() {
 	// defining the unit i.e. "g", "slices", "ml". Unit
 	// can sometimes be empty like in the example of eggs where
 	// you just say "5 eggs" and not "5 pieces of eggs" or anything else.
+
 	var dishes = [{
 		'id':1,
 		'name':'French toast',

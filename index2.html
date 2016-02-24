@@ -24,19 +24,17 @@
     <div class="view-side">
       <h4> My Dinner </h4>
       <p id="people"> People </p>
-      <div class="dropdown">
-          <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-            
-          <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-          </ul>
-      </div>
+      <select id="peopleDropdown">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+      </select>
       <br>
       <br>
       <div class="dishName">
@@ -46,7 +44,7 @@
 	  </div>
       <hr />
       <p id="totalPrice"> 0.00 SEK</p>
-      <a href="index3.html" class="btn btn-lg btn-default" id="confirmDinner" onclick="$('#view-header').toggle();">Confirm Dinner </a>
+      <a href="#" class="btn btn-lg btn-default" id="confirmDinner">Confirm Dinner </a>
     </div>
 
     <div class="container" id="container"> 
@@ -61,21 +59,17 @@
             <hr id="line-separator" />
             
             <div class="input-group" id="search">
-               <input type="text" class="form-control">
+               <input type="text" class="form-control" id="searchText">
                <span class="input-group-btn">
-                    <button class="btn btn-default" type="button">Search!</button>
+                    <button class="btn btn-default" type="button" id="searchBtn">Search!</button>
                </span>
             </div>
             
-            <div class="dropdown" id="dropdownmenu">
-                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" >Main
-                <span class="caret"></span></button>
-                <ul class="dropdown-menu">
-                  <li><a href="#">Entree</a></li>
-                  <li><a href="#">Main</a></li>
-                  <li><a href="#">Dessert</a></li>
-                </ul>
-            </div>
+            <select id="typeDropdown">
+              <option value="starter">Starter</option>
+              <option value="main dish" selected="selected">Main</option>
+              <option value="dessert">Dessert</option>
+            </select>
             
             </div>
       </div>
@@ -101,7 +95,11 @@
   <script src="js/app.js"></script>
   <script src="js/model/dinnerModel.js"></script>
   <script src="js/view/exampleView.js"></script>
-  <script src="js/view/exampleViewController.js"></script>
+  <!--<script src="js/view/ViewController2.js"></script> -->
+
+  <!-- Controller Scripts -->
+  <script src="js/controller/viewControllerSide.js"></script>
+    <script src="js/controller/viewControllerPanel.js"></script>
   
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
