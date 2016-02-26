@@ -51,6 +51,20 @@ var DinnerModel = function() {
 		}
 		notifyObservers();
 	}
+	// Remove selected dish from menu
+	this.removeSelectedDish = function(type) {
+		if(type === "starter") {
+			dishStarterId = 0;
+			sessionStorage.setItem("dishStarterId", dishStarterId);
+		} else if(type === "main dish") {
+			dishMainId = 0;
+			sessionStorage.setItem("dishMainId", dishMainId);
+		} else if(type === "dessert") {
+			dishDessertId = 0;
+			sessionStorage.setItem("dishDessertId", dishDessertId);
+		}
+		notifyObservers();
+	}
 
 	//Returns all the dishes on the menu.
 	this.getFullMenu = function() {

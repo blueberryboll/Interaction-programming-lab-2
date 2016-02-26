@@ -1,4 +1,4 @@
-//Site Wrapper Object constructor
+﻿//Site Wrapper Object constructor
 var ExampleView = function (container, model) {
 
 	this.displayDish = 100;
@@ -58,6 +58,14 @@ var ExampleView = function (container, model) {
 				menuItemCostP.setAttribute('class','cost');
 				var menuItemCostPText = document.createTextNode(model.getDishPrice(selectedDishes[i].id));
 				menuItemCostP.appendChild(menuItemCostPText);
+				var menuItemCostPA = document.createElement('a');
+				menuItemCostP.setAttribute('class','removal');
+				menuItemCostP.setAttribute('id',selectedDishes[i].type);
+				menuItemCostP.setAttribute('href','#');
+				var menuItemCostPAText = document.createTextNode("╳");
+				menuItemCostPA.appendChild(menuItemCostPAText);
+				menuItemCostP.appendChild(menuItemCostPA);
+
 				
 				this.displayDishItems.append(menuItemNameP);
 				this.displayDishItems.append(menuItemCostP);
