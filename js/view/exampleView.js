@@ -169,12 +169,13 @@ var ExampleView = function (container, model) {
 		}
 		
 		// Menu thumbs
-		if( $('#menuThumbs').length !== 0 ) {
+		if( $('#menuThumbs').length !== 0 ) {			
+			this.menuThumbs = container.find("#menuThumbs");
+			this.menuThumbs.html('<div class="col-xs-2" id ="vline"><p class="priceAlign" id="sumCost">Total Cost: 0SEK</p></div>');
+			
 			this.sumCost = container.find("#sumCost");
 			this.sumCost.html("Total Cost: "+model.getTotalMenuPrice()+"SEK");
 			
-			this.menuThumbs = container.find("#menuThumbs");
-			this.menuThumbs.html('<div class="col-xs-2" id ="vline"><p class="priceAlign" id="sumCost">Total Cost: 0SEK</p></div>');
 			var menuDishes = model.getFullMenu();
 			for(var i=0; i<menuDishes.length; i++) {
 				var recipeDiv = document.createElement('div');
@@ -203,6 +204,8 @@ var ExampleView = function (container, model) {
 
 				this.menuThumbs.prepend(recipeDiv);
 			}
+			
+			this.printBtn = container.find("#print");
 		}
 		
 		// Summary container
@@ -277,6 +280,6 @@ var ExampleView = function (container, model) {
 	// Info panel
 	if( $('#panel-info').length !== 0 ) { this.viewControllerPanelInfo = new ViewControllerPanelInfo(this,model);}
 	// Menu thumbs
-	if( $('#menuThumbs').length !== 0 ) { }
+	if( $('#menuThumbs').length !== 0 ) { this.viewControllerMenuThumbs = new ViewControllerMenuThumbs(this,model);}
 }
  
