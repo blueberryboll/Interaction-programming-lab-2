@@ -1,16 +1,18 @@
 //Site Wrapper Object constructor
 var ExampleView = function (container, model) {
-
+	
+	this.setDisplayDish = function(num) {
+		this.displayDish = num;
+	}
+	
 	this.update = function(){
 
 		// Get all the relevant elements of the view (ones that show data
-	  	// and/or ones that responed to interaction)
+	  	// and/or ones that responed to interaction) and populate with data from model
 		
-		//welcome view
+		// Welcome view
 		if( $('#newDinnerBtn').length !== 0 ) {
 			this.newDinnerBtn = $("#newDinnerBtn");
-			// Add view controller
-			this.viewControllerWelcome = new ViewControllerWelcome(this,model);
 		}
 
 
@@ -20,8 +22,8 @@ var ExampleView = function (container, model) {
 			this.peopleDropdown.val(model.getNumberOfGuests());
 			
 			// Add selected items
-			this.selectedDishItems = container.find("#selectedDishItems");
-			this.selectedDishItems.html('');
+			this.displayDishItems = container.find("#selectedDishItems");
+			this.displayDishItems.html('');
 			
 			var selectedDishes = model.getFullMenu();
 			for(var i=0; i<selectedDishes.length; i++) {
@@ -35,17 +37,14 @@ var ExampleView = function (container, model) {
 				var menuItemCostPText = document.createTextNode(model.getDishPrice(selectedDishes[i].id));
 				menuItemCostP.appendChild(menuItemCostPText);
 				
-				this.selectedDishItems.append(menuItemNameP);
-				this.selectedDishItems.append(menuItemCostP);
+				this.displayDishItems.append(menuItemNameP);
+				this.displayDishItems.append(menuItemCostP);
 			}
 
 			this.totalPrice = container.find("#totalPrice");
 			this.totalPrice.html("SEK "+model.getTotalMenuPrice());
 
 			this.confirmDinnerBtn = $("#confirmDinner");
-
-			// Add view controller
-			this.viewControllerSide = new ViewControllerSide(this,model);
 		}
 		
 
@@ -95,34 +94,30 @@ var ExampleView = function (container, model) {
 
 				recipeTiles.appendChild(recipeDiv);
 			}
-			
-
-			// Add view controller
-			this.viewControllerPanel = new ViewControllerPanel(this,model);
 		}
 		
 		// Individual recipe
 		if( $('#individualRecipeTitle').length !== 0 ) {
 			this.individualRecipeTitle = container.find("#individualRecipeTitle");
-			this.individualRecipeTitle.html(model.getDish(100).name);
+			this.individualRecipeTitle.html(model.getDish( this.displayDish ).name);
 
 			this.titleImg = container.find("#titleImg");
-			titleImg.src="images/"+model.getDish(100).image;
+			titleImg.src="images/"+model.getDish( this.displayDish ).image;
 
 			this.individualRecipeDescription = container.find("#individualRecipeDescription");
-			this.individualRecipeDescription.html(model.getDish(100).description);
+			this.individualRecipeDescription.html(model.getDish( this.displayDish ).description);
 
 			this.individualRecipePreparation = container.find("#individualRecipePreparation");
-			this.individualRecipePreparation.html(model.getDish(100).description);
+			this.individualRecipePreparation.html(model.getDish( this.displayDish ).description);
 			
 			this.recipeCost = container.find("#recipeCost");
-			this.recipeCost.html("SEK "+model.getDishPrice(100));
+			this.recipeCost.html("SEK "+model.getDishPrice( this.displayDish ));
 
 			// Fill in ingredient list
 			this.ingredientList = container.find("#recipeIngredientList");
 			this.ingredientList.html('');
 
-			var recipeIngredients = model.getDish(100).ingredients;
+			var recipeIngredients = model.getDish( this.displayDish ).ingredients;
 			for(var i=0; i<recipeIngredients.length; i++) {
 				var ingredientDiv = document.createElement('div');
 				ingredientDiv.setAttribute('class','ingredient');
@@ -137,9 +132,10 @@ var ExampleView = function (container, model) {
 				this.ingredientList.append(ingredientDiv);
 				this.ingredientList.append(inCostDiv);
 			}
-
-			// Add view controller
-			this.viewControllerIndividualRecipe = new ViewControllerIndividualRecipe(this,model);
+			
+			this.backToSelectDishBtn = container.find("#backToSelectDish");
+			
+			this.confirmDishBtn = container.find("#confirmDish");
 		}
 		
 		// Info panel
@@ -235,8 +231,30 @@ var ExampleView = function (container, model) {
 			}
 		}
 	}
+	
+	// Make observer of the model
 	model.addObserver(this);
+	
+	//Testing code
+	this.setDisplayDish(100);
 
+	// Populate layout elements with data from the model
 	this.update();	
+	
+	// Initialise view controllers
+	// Welcome view
+	if( $('#newDinnerBtn').length !== 0 ) { this.viewControllerWelcome = new ViewControllerWelcome(this,model); }
+	// Side menu
+	if( $('.view-side').length !== 0 ) { this.viewControllerSide = new ViewControllerSide(this,model); }
+	// Recipe tiles & Selection panel
+	if( $('#recipeTiles').length !== 0 ) { this.viewControllerPanel = new ViewControllerPanel(this,model);}
+	// Individual recipe
+	if( $('#individualRecipeTitle').length !== 0 ) { this.viewControllerIndividualRecipe = new ViewControllerIndividualRecipe(this,model);}
+	// Info panel
+	if( $('#panel-info').length !== 0 ) { }
+	// Menu thumbs
+	if( $('#menuThumbs').length !== 0 ) { }
+	// Summary container
+	if( $('#summaryContainer').length !== 0 ) { }
 }
  
