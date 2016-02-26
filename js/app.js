@@ -5,7 +5,7 @@ $(function() {
 	
 	// Testing code
 	model.setSelectedDish(100);
-	model.setNumberOfGuests(3);
+	//model.setNumberOfGuests(3);
 	
 	//And instatiate the main controller
 	//var mainController = new MainController();

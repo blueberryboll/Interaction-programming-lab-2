@@ -1,7 +1,7 @@
 //DinnerModel Object constructor
 var DinnerModel = function() {
  
-	//TODO Lab 2 implement the data structure that will hold number of guests
+	// Data structure to hold number of guests
 	// and selected dinner options for dinner menu
 	
 	var numberOfGuests = 1;
@@ -9,10 +9,17 @@ var DinnerModel = function() {
 	var dishStarterId = 0;
 	var dishMainId = 0;
 	var dishDessertId = 0;
+	
+	// Load data from session
+	if( !isNaN(parseInt(sessionStorage.getItem("numberOfGuests"))) ) { numberOfGuests = parseInt(sessionStorage.getItem("numberOfGuests")); };
+	if( !isNaN(parseInt(sessionStorage.getItem("dishStarterId"))) ) { dishStarterId = parseInt(sessionStorage.getItem("dishStarterId")); };
+	if( !isNaN(parseInt(sessionStorage.getItem("dishMainId"))) ) { dishMainId = parseInt(sessionStorage.getItem("dishMainId")); };
+	if( !isNaN(parseInt(sessionStorage.getItem("dishDessertId"))) ) { dishDessertId = parseInt(sessionStorage.getItem("dishDessertId")); };
 
 
 	this.setNumberOfGuests = function(num) {
 		numberOfGuests = num;
+		sessionStorage.setItem("numberOfGuests", numberOfGuests);
 		notifyObservers();
 	}
 
@@ -23,7 +30,7 @@ var DinnerModel = function() {
 
 	//Returns the dish that is on the menu for selected type 
 	this.getSelectedDish = function(type) {
-		for (i = 0; i < dishes.length; i++) {
+		for (var i = 0; i < dishes.length; i++) {
 			if(dishes[i].type === type && (dishes[i].id === dishStarterId || dishes[i].id === dishMainId || dishes[i].id === dishDessertId)){
 				return dishes[i];
 			}
@@ -31,13 +38,18 @@ var DinnerModel = function() {
 	}
 	// Set selected dish for menu
 	this.setSelectedDish = function(id) {
+		id = parseInt(id);
 		if(this.getDish(id).type === "starter") {
 			dishStarterId = id;
+			sessionStorage.setItem("dishStarterId", dishStarterId);
 		} else if(this.getDish(id).type === "main dish") {
 			dishMainId = id;
+			sessionStorage.setItem("dishMainId", dishMainId);
 		} else if(this.getDish(id).type === "dessert") {
 			dishDessertId = id;
+			sessionStorage.setItem("dishDessertId", dishDessertId);
 		}
+		notifyObservers();
 	}
 
 	//Returns all the dishes on the menu.

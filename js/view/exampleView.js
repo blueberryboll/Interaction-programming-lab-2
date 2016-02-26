@@ -1,8 +1,30 @@
 //Site Wrapper Object constructor
 var ExampleView = function (container, model) {
+
+	this.displayDish = 100;
 	
-	this.setDisplayDish = function(num) {
-		this.displayDish = num;
+	this.setDisplayDish = function(id) {
+		this.displayDish = id;
+		sessionStorage.setItem("displayDish", this.displayDish);
+	}
+	
+	this.getDisplayDish = function() {
+		return this.displayDish;
+	}
+	
+	this.initDisplayDish = function() {
+		if( !isNaN(parseInt(sessionStorage.getItem("displayDish"))) ) { this.displayDish = parseInt(sessionStorage.getItem("displayDish")); };
+		if( this.getQueryVariable("recipeId") !== false ) { this.displayDish = this.getQueryVariable("recipeId"); };
+	}
+	
+	this.getQueryVariable = function(variable) {
+       var query = window.location.search.substring(1);
+       var vars = query.split("&");
+       for (var i=0;i<vars.length;i++) {
+               var pair = vars[i].split("=");
+               if(pair[0] == variable){return pair[1];}
+       }
+       return(false);
 	}
 	
 	this.update = function(){
@@ -142,6 +164,8 @@ var ExampleView = function (container, model) {
 		if( $('#panel-info').length !== 0 ) {
 			this.panelTitle = container.find("#panel-title");
 			this.panelTitle.html("My Dinner: "+model.getNumberOfGuests()+" people");
+			
+			this.backtoEditDinnerBtn = container.find("#backtoEditDinner");
 		}
 		
 		// Menu thumbs
@@ -235,11 +259,11 @@ var ExampleView = function (container, model) {
 	// Make observer of the model
 	model.addObserver(this);
 	
-	//Testing code
-	this.setDisplayDish(100);
+	//Initialise variable
+	this.initDisplayDish();
 
 	// Populate layout elements with data from the model
-	this.update();	
+	this.update();
 	
 	// Initialise view controllers
 	// Welcome view
@@ -251,10 +275,8 @@ var ExampleView = function (container, model) {
 	// Individual recipe
 	if( $('#individualRecipeTitle').length !== 0 ) { this.viewControllerIndividualRecipe = new ViewControllerIndividualRecipe(this,model);}
 	// Info panel
-	if( $('#panel-info').length !== 0 ) { }
+	if( $('#panel-info').length !== 0 ) { this.viewControllerPanelInfo = new ViewControllerPanelInfo(this,model);}
 	// Menu thumbs
 	if( $('#menuThumbs').length !== 0 ) { }
-	// Summary container
-	if( $('#summaryContainer').length !== 0 ) { }
 }
  
