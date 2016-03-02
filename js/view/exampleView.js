@@ -1,7 +1,7 @@
 ﻿//Site Wrapper Object constructor
 var ExampleView = function (container, model) {
 
-	this.displayDish = 100;
+	this.displayDish = 0;
 	
 	this.setDisplayDish = function(id) {
 		this.displayDish = id;
@@ -13,8 +13,8 @@ var ExampleView = function (container, model) {
 	}
 	
 	this.initDisplayDish = function() {
-		if( !isNaN(parseInt(sessionStorage.getItem("displayDish"))) ) { this.displayDish = parseInt(sessionStorage.getItem("displayDish")); };
-		if( this.getQueryVariable("recipeId") !== false ) { this.displayDish = this.getQueryVariable("recipeId"); };
+		//if( !isNaN(parseInt(sessionStorage.getItem("displayDish"))) ) { this.displayDish = parseInt(sessionStorage.getItem("displayDish")); };
+		if( this.getQueryVariable("recipeId") !== false ) { this.displayDish = parseInt(this.getQueryVariable("recipeId")); };
 	}
 	
 	this.getQueryVariable = function(variable) {
@@ -45,7 +45,14 @@ var ExampleView = function (container, model) {
 			
 			// Add selected items
 			this.displayDishItems = container.find("#selectedDishItems");
-			this.displayDishItems.html('');
+			this.displayDishItems.html('<p class="dish">Pending</p><p class="cost" id="pendingCost">0.00</p>');
+			
+			if(model.isDishSelected(this.
+				displayDish) === false){
+				this.pendingCost = container.find("#pendingCost");
+				this.pendingCost.html(model.getDishPrice( this.displayDish ));
+			}
+
 			
 			var selectedDishes = model.getFullMenu();
 			for(var i=0; i<selectedDishes.length; i++) {
@@ -59,22 +66,25 @@ var ExampleView = function (container, model) {
 				var menuItemCostPText = document.createTextNode(model.getDishPrice(selectedDishes[i].id));
 				menuItemCostP.appendChild(menuItemCostPText);
 				var menuItemCostPA = document.createElement('a');
-				menuItemCostP.setAttribute('class','removal');
-				menuItemCostP.setAttribute('id',selectedDishes[i].type);
-				menuItemCostP.setAttribute('href','#');
+				menuItemCostPA.setAttribute('class','removal');
+				menuItemCostPA.setAttribute('id',selectedDishes[i].type.replace(/\s+/, "") );
+				menuItemCostPA.setAttribute('href','#');
 				var menuItemCostPAText = document.createTextNode("╳");
 				menuItemCostPA.appendChild(menuItemCostPAText);
 				menuItemCostP.appendChild(menuItemCostPA);
 
-				
-				this.displayDishItems.append(menuItemNameP);
-				this.displayDishItems.append(menuItemCostP);
+				this.displayDishItems.prepend(menuItemCostP);				
+				this.displayDishItems.prepend(menuItemNameP);
 			}
 
 			this.totalPrice = container.find("#totalPrice");
 			this.totalPrice.html("SEK "+model.getTotalMenuPrice());
 
 			this.confirmDinnerBtn = $("#confirmDinner");
+
+			if(this.viewControllerSide ){
+				this.viewControllerSide.update();
+			}
 		}
 		
 
@@ -179,7 +189,7 @@ var ExampleView = function (container, model) {
 		// Menu thumbs
 		if( $('#menuThumbs').length !== 0 ) {			
 			this.menuThumbs = container.find("#menuThumbs");
-			this.menuThumbs.html('<div class="col-xs-2" id ="vline"><p class="priceAlign" id="sumCost">Total Cost: 0SEK</p></div>');
+			this.menuThumbs.html('<div class="clearfix visible-xs"></div><div class="col-xs-2" id ="vline"><p class="priceAlign" id="sumCost">Total Cost: 0SEK</p></div>');
 			
 			this.sumCost = container.find("#sumCost");
 			this.sumCost.html("Total Cost: "+model.getTotalMenuPrice()+"SEK");
@@ -187,7 +197,7 @@ var ExampleView = function (container, model) {
 			var menuDishes = model.getFullMenu();
 			for(var i=0; i<menuDishes.length; i++) {
 				var recipeDiv = document.createElement('div');
-				recipeDiv.setAttribute('class','col-xs-2');
+				recipeDiv.setAttribute('class','col-xs-3');
 
 				var recipeImg = document.createElement('img');
 				recipeImg.setAttribute('class','imgThumb');

@@ -135,7 +135,15 @@ var DinnerModel = function() {
 			dishDessertId = id;
 		}
 	}
-
+	//Check if recipe is selected for menu
+	this.isDishSelected = function(id) {
+		if(id === dishStarterId || id === dishMainId || id === dishDessertId){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
 	//Removes dish from menu
 	this.removeDishFromMenu = function(id) {
 		var dishType;
@@ -146,13 +154,34 @@ var DinnerModel = function() {
 		}
 		if(dishType === 'starter'){
 			dishStarterId = 0;
+			sessionStorage.setItem("dishStarterId", dishStarterId);
 		}
 		else if(dishType === 'main dish'){
 			dishMainId = 0;
+			sessionStorage.setItem("dishMainId", dishStarterId);
 		}
 		else if(dishType === 'dessert'){
 			dishDessertId = 0;
+			sessionStorage.setItem("dishDessertId", dishStarterId);
 		}
+		notifyObservers();
+	}
+
+	//Removes dish from menu
+	this.removeDishTypeFromMenu = function(dishType) {
+		if(dishType === 'starter'){
+			dishStarterId = 0;
+			sessionStorage.setItem("dishStarterId", dishStarterId);
+		}
+		else if(dishType === 'main dish'){
+			dishMainId = 0;
+			sessionStorage.setItem("dishMainId", dishStarterId);
+		}
+		else if(dishType === 'dessert'){
+			dishDessertId = 0;
+			sessionStorage.setItem("dishDessertId", dishStarterId);
+		}
+		notifyObservers();
 	}
 
 	//function that returns all dishes of specific type (i.e. "starter", "main dish" or "dessert")
