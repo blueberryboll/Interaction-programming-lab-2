@@ -47,8 +47,7 @@ var ExampleView = function (container, model) {
 			this.displayDishItems = container.find("#selectedDishItems");
 			this.displayDishItems.html('<p class="dish">Pending</p><p class="cost" id="pendingCost">0.00</p>');
 			
-			if(model.isDishSelected(this.
-				displayDish) === false){
+			if(model.isDishSelected(this.displayDish) === false && this.displayDish !== 0){
 				this.pendingCost = container.find("#pendingCost");
 				this.pendingCost.html(model.getDishPrice( this.displayDish ));
 			}
@@ -73,8 +72,8 @@ var ExampleView = function (container, model) {
 				menuItemCostPA.appendChild(menuItemCostPAText);
 				menuItemCostP.appendChild(menuItemCostPA);
 
-				this.displayDishItems.prepend(menuItemCostP);				
-				this.displayDishItems.prepend(menuItemNameP);
+				this.displayDishItems.append(menuItemNameP);
+				this.displayDishItems.append(menuItemCostP);
 			}
 
 			this.totalPrice = container.find("#totalPrice");
@@ -138,8 +137,12 @@ var ExampleView = function (container, model) {
 		
 		// Individual recipe
 		if( $('#individualRecipeTitle').length !== 0 ) {
+			
 			this.individualRecipeTitle = container.find("#individualRecipeTitle");
 			this.individualRecipeTitle.html(model.getDish( this.displayDish ).name);
+
+			this.individualGuests = container.find("#individualGuests");
+			this.individualGuests.html("Ingredients for " + model.getNumberOfGuests() + " people");
 
 			this.titleImg = container.find("#titleImg");
 			titleImg.src="images/"+model.getDish( this.displayDish ).image;
@@ -161,12 +164,12 @@ var ExampleView = function (container, model) {
 			for(var i=0; i<recipeIngredients.length; i++) {
 				var ingredientDiv = document.createElement('div');
 				ingredientDiv.setAttribute('class','ingredient');
-				var ingredientDivText = document.createTextNode(recipeIngredients[i].quantity+" "+recipeIngredients[i].unit+" "+recipeIngredients[i].name);
+				var ingredientDivText = document.createTextNode(Math.round( (recipeIngredients[i].quantity/4*model.getNumberOfGuests()) *10)/10+" "+recipeIngredients[i].unit+" "+recipeIngredients[i].name);
 				ingredientDiv.appendChild(ingredientDivText);
 
 				var inCostDiv = document.createElement('div');
 				inCostDiv.setAttribute('class','inCost');
-				var inCostDivText = document.createTextNode("SEK "+recipeIngredients[i].price);
+				var inCostDivText = document.createTextNode("SEK "+ Math.round( (recipeIngredients[i].price/4*model.getNumberOfGuests()) *10)/10);
 				inCostDiv.appendChild(inCostDivText);
 
 				this.ingredientList.append(ingredientDiv);
